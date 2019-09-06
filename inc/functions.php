@@ -1,8 +1,6 @@
 <?php
-// PHP - Random Quote Generator
+// PHP - Random Harry Potter Quote Generator
 
-// Create the Multidimensional array of quote elements and name it quotes
-// Each inner array element should be an associative array
 //This is a array holding an array of 10 quotes with other attributes
 $quotes = [
     0 => array(
@@ -120,36 +118,40 @@ $quotes = [
 ];
 
 
-// Create the getRandomQuuote function and name it getRandomQuote
+/* This function gets a random number, and then based off that number, pulls a quote from the $quotes array */
 function getRandomQuote($array) {
     $randomNumber = rand(0, 9);
     return $array[$randomNumber];
 };
 
-// Create the printQuote funtion and name it printQuote
+/* This function takes the getRandomQuote() function and stores the quote in a string */
 function printQuote($array) {
     $quote_array = getRandomQuote($array);
     $quote_string = '';
     $quote_string = "<p class='quote'>" . $quote_array['quote'] . "</p>";
 
+//Only shows citation and year if both are present 
     if ($quote_array['citation'] && $quote_array['year']) {
         $quote_string .= "<p class='quote'>" . $quote_array['source'] . "</p>";
         $quote_string .= "<span class='citation'>" . $quote_array['citation'] . "</span>";
         $quote_string .= "<span class='year'>" . $quote_array['year'] . "</span>";
         $quote_string .= "</p>";
+//Only shows citation
     } elseif ($quote_array['citation']) {
         $quote_string .= "<p class='quote'>" . $quote_array['source'] . "</p>";
         $quote_string .= "<span class='citation'>" . $quote_array['citation'] . "</span>";
         $quote_string .= "</p>";
+//Only shows year 
     } elseif ($quote_array['year']) {
         $quote_string .= "<p class='quote'>" . $quote_array['source'] . "</p>";
         $quote_string .= "<span class='year'>" . $quote_array['year'] . "</span>";
         $quote_string .= "</p>";
+//Only shows source because there is no year or citation  
     } else {
         $quote_string .= "<p class='quote'>" . $quote_array['source'] . "</p>";
     }
 
-
+//Prints out the total string 
     echo $quote_string;
 };
 
