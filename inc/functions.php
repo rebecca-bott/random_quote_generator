@@ -3,6 +3,7 @@
 
 // Create the Multidimensional array of quote elements and name it quotes
 // Each inner array element should be an associative array
+//This is a array holding an array of 10 quotes with other attributes
 $quotes = [
     0 => array(
 
@@ -48,7 +49,7 @@ $quotes = [
         'year' => ''
             
                 ),
-    0 => array(
+    4 => array(
 
         'quote' => "If you want to know what a man’s like, take a good look at how he treats his inferiors, not his equals",
                 
@@ -56,10 +57,10 @@ $quotes = [
                 
         'citation' => "Goblet of Fire",
                 
-        'year' => ''
+        'year' => 'year 4'
                 
                     ),
-    0 => array(
+    5 => array(
 
         'quote' => "Differences of habit and language are nothing at all if our aims are identical and our hearts are open",
                     
@@ -67,10 +68,10 @@ $quotes = [
                     
         'citation' => "Goblet of Fire",
                     
-        'year' => ''
+        'year' => 'year 4'
                     
                         ),
-    0 => array(
+    6 => array(
 
         'quote' => "Things we lose have a way of coming back to us in the end, if not always in the way we expect",
                     
@@ -78,10 +79,10 @@ $quotes = [
                     
         'citation' => "Order of the Phoenix",
                     
-        'year' => ''
+        'year' => 'year 5'
                     
                         ),
-    0 => array(
+    7 => array(
 
         'quote' => "You're a little scary sometimes, you know that? Brilliant ... but scary",
                     
@@ -92,7 +93,7 @@ $quotes = [
         'year' => ''
                     
                         ),
-     0 => array(
+     8 => array(
 
         'quote' => "Always",
                     
@@ -100,10 +101,10 @@ $quotes = [
                     
         'citation' => "Deathly Hallows",
                     
-        'year' => ''
+        'year' => 'year 7'
                     
                         ),
-    0 => array(
+    9 => array(
 
         'quote' => "Of course it is happening inside your head, Harry, but why on earth should that mean it is not real?",
                     
@@ -111,17 +112,45 @@ $quotes = [
                     
         'citation' => "Deathly Hallows",
                     
-        'year' => ''
+        'year' => 'year 7'
                     
                         ),
 
 
 ];
 
-echo $quotes;
 
 // Create the getRandomQuuote function and name it getRandomQuote
-
-
+function getRandomQuote($array) {
+    $randomNumber = rand(0, 9);
+    return $array[$randomNumber];
+};
 
 // Create the printQuote funtion and name it printQuote
+function printQuote($array) {
+    $quote_array = getRandomQuote($array);
+    $quote_string = '';
+    $quote_string = "<p class='quote'>" . $quote_array['quote'] . "</p>";
+
+    if ($quote_array['citation'] && $quote_array['year']) {
+        $quote_string .= "<p class='quote'>" . $quote_array['source'] . "</p>";
+        $quote_string .= "<span class='citation'>" . $quote_array['citation'] . "</span>";
+        $quote_string .= "<span class='year'>" . $quote_array['year'] . "</span>";
+        $quote_string .= "</p>";
+    } elseif ($quote_array['citation']) {
+        $quote_string .= "<p class='quote'>" . $quote_array['source'] . "</p>";
+        $quote_string .= "<span class='citation'>" . $quote_array['citation'] . "</span>";
+        $quote_string .= "</p>";
+    } elseif ($quote_array['year']) {
+        $quote_string .= "<p class='quote'>" . $quote_array['source'] . "</p>";
+        $quote_string .= "<span class='year'>" . $quote_array['year'] . "</span>";
+        $quote_string .= "</p>";
+    } else {
+        $quote_string .= "<p class='quote'>" . $quote_array['source'] . "</p>";
+    }
+
+
+    echo $quote_string;
+};
+
+printQuote($quotes);
