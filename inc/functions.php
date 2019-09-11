@@ -132,23 +132,23 @@ function printQuote($array) {
 
 //Only shows citation and year if both are present 
     if ($quote_array['citation'] && $quote_array['year']) {
-        $quote_string .= "<p class='quote'>" . $quote_array['source'];
+        $quote_string .= "<p class='source'>" . $quote_array['source'];
         $quote_string .= "<span class='citation'>" . $quote_array['citation'] . "</span>";
         $quote_string .= "<span class='year'>" . $quote_array['year'] . "</span>";
         $quote_string .= "</p>";
 //Only shows citation
     } elseif ($quote_array['citation']) {
-        $quote_string .= "<p class='quote'>" . $quote_array['source'];
+        $quote_string .= "<p class='source'>" . $quote_array['source'];
         $quote_string .= "<span class='citation'>" . $quote_array['citation'] . "</span>";
         $quote_string .= "</p>";
 //Only shows year 
     } elseif ($quote_array['year']) {
-        $quote_string .= "<p class='quote'>" . $quote_array['source'] ;
+        $quote_string .= "<p class='source'>" . $quote_array['source'] ;
         $quote_string .= "<span class='year'>" . $quote_array['year'] . "</span>";
         $quote_string .= "</p>";
 //Only shows source because there is no year or citation  
     } else {
-        $quote_string .= "<p class='quote'>" . $quote_array['source'] . "</p>";
+        $quote_string .= "<p class='source'>" . $quote_array['source'] . "</p>";
     }
 
 //Prints out the total string 
